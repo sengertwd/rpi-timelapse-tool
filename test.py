@@ -15,7 +15,7 @@ for i in pins:
     gpio.setup(i, gpio.OUT)
     gpio.output(i, gpio.LOW)
 
-Steps = 512
+Steps = 4096
 
 # Sequence
 Seq = [
@@ -46,9 +46,7 @@ def doStep (step):
 print "Spin Time"
 for i in range(Steps):
     whichStep = i % 8
-    print whichStep
-    # for step in HalfSeq:
-    #     doStep(step)
+    doStep(HalfSeq[whichStep])
 
 print "turning off motor"
 for i in pins:
