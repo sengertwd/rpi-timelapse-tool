@@ -38,24 +38,17 @@ WaitTime = .17/float(1000)
 
 # doStep
 def doStep (step):
-    # for active in step:
-        # gpio.output(pins[0], active)
-        # print active
-        # time.sleep(WaitTime)
-    gpio.output(pins[0], step[0])
-    time.sleep(WaitTime)
-    gpio.output(pins[1], step[1])
-    time.sleep(WaitTime)
-    gpio.output(pins[2], step[2])
-    time.sleep(WaitTime)
-    gpio.output(pins[3], step[3])
-    time.sleep(WaitTime)
+    for i in range(0,4):
+        gpio.output(pins[i], step[i])
+        time.sleep(WaitTime)
 
 
 print "Spin Time"
 for i in range(Steps):
-    for step in HalfSeq:
-        doStep(step)
+    whichStep = i % 8
+    print whichStep
+    # for step in HalfSeq:
+    #     doStep(step)
 
 print "turning off motor"
 for i in pins:
